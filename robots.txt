@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yashubakedyal-alt.github.io/smart-tools/sitemap.xml
