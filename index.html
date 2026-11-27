@@ -6,10 +6,15 @@
   <meta name="description" content="Free online EMI Calculator, SIP Calculator, GST Calculator, Age Calculator, QR Code Generator, Password Generator, and Stylish Fonts." />
   <meta name="keywords" content="EMI calculator, SIP calculator, GST calculator India, age calculator, free QR code generator, strong password generator, stylish fonts" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="SmartTools Hub — 7-in-1 Free Online Calculators &amp; Tools" />
+  <meta property="og:title" content="SmartTools Hub — 7-in-1 Modern Online Calculators &amp; Tools" />
   <meta property="og:description" content="Calculate Loan EMI, Mutual Fund SIP, GST, Exact Age, and generate QR codes or strong passwords instantly for free." />
   <meta property="og:type" content="website" />
   <title>SmartTools Hub — Free EMI, SIP, GST, Age &amp; QR Code Tools</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -18,134 +23,192 @@
       {
         "@type": "Question",
         "name": "How is Loan EMI calculated?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Loan EMI is calculated using the standard reducing-balance formula based on loan amount, annual interest rate, and tenure in months."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Loan EMI is calculated using the standard reducing-balance formula based on loan amount, annual interest rate, and tenure in months." }
       },
       {
         "@type": "Question",
         "name": "How does the GST Calculator work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Enter your amount, choose a 5%, 12%, 18%, or 28% GST slab, and switch between Add GST or Remove GST to see CGST, SGST, and total price."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Enter your amount, choose a 5%, 12%, 18%, or 28% GST slab, and switch between Add GST or Remove GST to see CGST, SGST, and total price." }
       },
       {
         "@type": "Question",
         "name": "Is SmartTools Hub free to use?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, all 7 calculators and generators on SmartTools Hub are 100% free and run privately inside your browser."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, all 7 calculators and generators on SmartTools Hub are 100% free and run privately inside your browser." }
       }
     ]
   }
   </script>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #0b1120; color: #f8fafc; }
-    .hidden { display: none !important; }
-    .ad-slot {
-      border: 1.5px dashed rgba(148, 163, 184, 0.35);
-      background: rgba(30, 41, 59, 0.45);
+    :root {
+      --bg-main: #060913;
+      --bg-card: #0f172a;
+      --bg-sub: rgba(2, 6, 23, 0.65);
+      --border-col: rgba(148, 163, 184, 0.16);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
     }
+    body.light-mode {
+      --bg-main: #f1f5f9;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-sub: rgba(241, 245, 249, 0.9);
+      --border-col: rgba(15, 23, 42, 0.1);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+    }
+    h1, h2, h3, .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+    .tabular-nums { font-family: 'JetBrains Mono', monospace; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      background-image:
+        radial-gradient(at 15% 10%, rgba(99, 102, 241, 0.18) 0px, transparent 45%),
+        radial-gradient(at 85% 15%, rgba(6, 182, 212, 0.14) 0px, transparent 45%);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .modern-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-col);
+          }
+    .modern-sub {
+      background: var(--bg-sub);
+      border: 1px solid var(--border-col);
+    }
+    .text-muted { color: var(--text-muted); }
+    .ad-slot {
+      border: 1.5px dashed rgba(148, 163, 184, 0.3);
+      background: rgba(148, 163, 184, 0.06);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .hidden { display: none !important; }
+    .flex { display: flex; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
-  <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-20">
+  <!-- Modern Sticky Navbar -->
+  <header class="modern-card sticky top-0 z-30 border-t-0 border-x-0">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-      <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center font-black text-slate-950">S</div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-lime-300 via-cyan-400 to-fuchsia-500 flex items-center justify-center font-black text-white shadow-lg shadow-indigo-500/25">
+          S
+        </div>
         <div>
-          <h1 class="text-base sm:text-lg font-extrabold leading-none">SmartTools Hub</h1>
-          <p class="text-[11px] text-slate-400 mt-0.5">7-in-1 Fast Daily Tools</p>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-black tracking-tight">SmartTools Hub</h1>
+            <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">Pro 2.0</span>
+          </div>
+          <p class="text-[11px] text-muted">Fast • Zero-Lag • Gen-Z Edition ✦</p>
         </div>
       </div>
+
       <div class="flex items-center gap-2 text-xs">
-        <button id="btn-open-about" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 cursor-pointer">About</button>
-        <button id="btn-open-privacy" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 cursor-pointer">Privacy Policy</button>
+        <button id="btn-lang" type="button" title="Switch Language (English / Hindi)"
+          class="modern-sub px-2.5 py-2 rounded-xl font-bold hover:opacity-80 transition cursor-pointer">
+          🌐 EN
+        </button>
+        <button id="btn-chat-open" type="button" title="Quick Help Chat"
+          class="modern-sub px-2.5 py-2 rounded-xl font-bold hover:opacity-80 transition cursor-pointer">
+          💬 Chat
+        </button>
+        <button id="btn-theme" type="button" title="Toggle Light/Dark Mode"
+          class="modern-sub px-3 py-2 rounded-xl font-bold hover:opacity-80 transition cursor-pointer">
+          🌙 Dark
+        </button>
+        <button id="btn-share-site" type="button"
+          class="px-3 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-bold hover:brightness-110 transition cursor-pointer">
+          Share
+        </button>
+        <button id="btn-open-about" type="button" class="modern-sub px-2.5 py-2 rounded-xl font-semibold hidden sm:inline-block cursor-pointer">About</button>
+        <button id="btn-open-privacy" type="button" class="modern-sub px-2.5 py-2 rounded-xl font-semibold cursor-pointer">Privacy</button>
       </div>
     </div>
   </header>
 
-  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-5 space-y-5">
-    <!-- Top AdSense Banner Slot -->
-    <div class="ad-slot rounded-xl p-3 text-center text-xs text-slate-400">
-      <span class="font-semibold text-slate-300">AdSense Top Banner Slot (728×90 / Responsive)</span> — Paste your Google AdSense code here after approval
-    </div>
+  <main class="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-4 py-3 space-y-3">
+    <!-- Hero + Search Pill -->
+    <section class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+      <div>
+        <h2 id="hero-title" class="text-xl sm:text-2xl font-black tracking-tight bg-gradient-to-r from-lime-300 via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
+          All-in-One Smart Calculators
+        </h2>
+        <p id="hero-sub" class="text-xs sm:text-sm text-muted mt-1">Pick a tool below for instant EMI, SIP, GST, Age, Converter, QR &amp; Password tools.</p>
+      </div>
+      <div class="w-full sm:w-72">
+        <input id="tool-search" type="text" placeholder="🔍 Search tools (EMI, GST, QR...)"
+          class="modern-card w-full shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+    </section>
 
-    <!-- Instant Tool Search -->
-    <div class="relative">
-      <input id="tool-search" type="text" placeholder="Search tools (EMI, SIP, GST, Age, QR, Password, Fonts)..."
-        class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500" />
-    </div>
 
-    <!-- Tool Tabs -->
-    <nav class="flex flex-wrap gap-2" id="tool-tabs">
-      <button type="button" data-tab="emi" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white cursor-pointer">EMI Calculator</button>
-      <button type="button" data-tab="sip" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer">SIP Calculator</button>
-      <button type="button" data-tab="gst" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer">GST Calculator</button>
-      <button type="button" data-tab="age" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer">Age Calculator</button>
-      <button type="button" data-tab="qr" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer">QR Generator</button>
-      <button type="button" data-tab="pwd" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer">Password Gen</button>
-      <button type="button" data-tab="bio" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer">Stylish Fonts</button>
+
+    <!-- Modern Pill Tabs -->
+    <nav class="flex flex-nowrap sm:flex-wrap gap-1.5 overflow-x-auto no-scrollbar pb-1" id="tool-tabs">
+      <button type="button" data-tab="emi" class="tab-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-md shadow-indigo-500/20 cursor-pointer transition">💳 EMI</button>
+      <button type="button" data-tab="sip" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">📈 SIP</button>
+      <button type="button" data-tab="gst" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">🧾 GST</button>
+      <button type="button" data-tab="age" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">🎂 Age</button>
+      <button type="button" data-tab="qr" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">📱 QR Code</button>
+      <button type="button" data-tab="pwd" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">🔐 Password</button>
+      <button type="button" data-tab="trans" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">🌍 Translate</button>
+      <button type="button" data-tab="conv" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">🔄 Converter</button>
+      <button type="button" data-tab="bio" class="tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition">✨ Fonts</button>
     </nav>
 
     <!-- 1. EMI Calculator -->
-    <section id="panel-emi" class="tool-panel bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">Loan &amp; Home EMI Calculator</h2>
-      <p class="text-xs text-slate-400 mt-1">Calculate monthly EMI, total interest, and total payable amount instantly.</p>
+    <section id="panel-emi" class="tool-panel modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <div class="flex items-center justify-between gap-2">
+        <div>
+          <h3 class="text-xl font-black">Loan &amp; Home EMI Calculator</h3>
+          <p class="text-xs text-muted mt-0.5">Adjust sliders to see monthly EMI and interest breakdown instantly.</p>
+        </div>
+      </div>
       <div class="grid md:grid-cols-2 gap-6 mt-5">
         <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1">
-              <span>Loan Amount (₹)</span>
-              <span id="emi-amt-lbl" class="text-indigo-400">₹5,00,000</span>
+          <div class="modern-sub rounded-2xl p-3.5">
+            <div class="flex justify-between text-xs font-bold mb-2">
+              <span>Loan Amount</span>
+              <span id="emi-amt-lbl" class="text-indigo-400 tabular-nums">₹5,00,000</span>
             </div>
             <input id="emi-amt" type="range" min="50000" max="10000000" step="25000" value="500000" class="w-full accent-indigo-500" />
           </div>
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1">
+          <div class="modern-sub rounded-2xl p-3.5">
+            <div class="flex justify-between text-xs font-bold mb-2">
               <span>Interest Rate (% p.a.)</span>
-              <span id="emi-rate-lbl" class="text-indigo-400">9.5%</span>
+              <span id="emi-rate-lbl" class="text-indigo-400 tabular-nums">9.5%</span>
             </div>
             <input id="emi-rate" type="range" min="5" max="24" step="0.25" value="9.5" class="w-full accent-indigo-500" />
           </div>
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1">
-              <span>Tenure (Years)</span>
-              <span id="emi-yrs-lbl" class="text-indigo-400">5 Years</span>
+          <div class="modern-sub rounded-2xl p-3.5">
+            <div class="flex justify-between text-xs font-bold mb-2">
+              <span>Tenure</span>
+              <span id="emi-yrs-lbl" class="text-indigo-400 tabular-nums">5 Years</span>
             </div>
             <input id="emi-yrs" type="range" min="1" max="30" step="1" value="5" class="w-full accent-indigo-500" />
           </div>
         </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-center space-y-3">
+
+        <div class="modern-sub rounded-2xl p-5 flex flex-col justify-center space-y-4">
           <div>
-            <div class="text-xs text-slate-400">Monthly EMI</div>
-            <div id="emi-monthly" class="text-2xl sm:text-3xl font-black text-emerald-400">₹10,501</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-bold">Monthly EMI</div>
+            <div id="emi-monthly" class="text-3xl sm:text-4xl font-black text-emerald-400 tabular-nums mt-1">₹10,501</div>
           </div>
-          <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800 text-xs">
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-700/30 text-xs">
             <div>
-              <div class="text-slate-400">Total Interest</div>
-              <div id="emi-interest" class="font-bold text-amber-300 text-sm mt-0.5">₹1,30,056</div>
+              <div class="text-muted">Total Interest</div>
+              <div id="emi-interest" class="font-extrabold text-amber-400 text-base tabular-nums mt-0.5">₹1,30,056</div>
             </div>
             <div>
-              <div class="text-slate-400">Total Payment</div>
-              <div id="emi-total" class="font-bold text-white text-sm mt-0.5">₹6,30,056</div>
+              <div class="text-muted">Total Payment</div>
+              <div id="emi-total" class="font-extrabold text-base tabular-nums mt-0.5">₹6,30,056</div>
             </div>
           </div>
-          <div class="pt-1">
-            <div class="h-2.5 w-full rounded-full bg-amber-400/80 overflow-hidden flex">
+          <div>
+            <div class="h-3 w-full rounded-full bg-amber-400/80 overflow-hidden flex">
               <div id="emi-bar-principal" class="h-full bg-emerald-400 transition-all" style="width: 79%"></div>
             </div>
-            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
-              <span>■ Principal</span><span>■ Interest</span>
+            <div class="flex justify-between text-[11px] text-muted mt-1.5 font-semibold">
+              <span>● Principal</span><span>● Interest</span>
             </div>
           </div>
         </div>
@@ -153,122 +216,50 @@
     </section>
 
     <!-- 2. SIP Calculator -->
-    <section id="panel-sip" class="tool-panel hidden bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">Mutual Fund SIP Calculator</h2>
-      <p class="text-xs text-slate-400 mt-1">Estimate future wealth from your monthly SIP investments.</p>
+    <section id="panel-sip" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">Mutual Fund SIP Calculator</h3>
+      <p class="text-xs text-muted mt-0.5">Plan your monthly SIP and estimate long-term wealth.</p>
       <div class="grid md:grid-cols-2 gap-6 mt-5">
         <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1">
-              <span>Monthly Investment (₹)</span>
-              <span id="sip-amt-lbl" class="text-cyan-400">₹5,000</span>
-            </div>
+          <div class="modern-sub rounded-2xl p-3.5">
+            <div class="flex justify-between text-xs font-bold mb-2"><span>Monthly SIP</span><span id="sip-amt-lbl" class="text-cyan-400 tabular-nums">₹5,000</span></div>
             <input id="sip-amt" type="range" min="500" max="100000" step="500" value="5000" class="w-full accent-cyan-400" />
           </div>
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1">
-              <span>Expected Return (% p.a.)</span>
-              <span id="sip-rate-lbl" class="text-cyan-400">12%</span>
-            </div>
+          <div class="modern-sub rounded-2xl p-3.5">
+            <div class="flex justify-between text-xs font-bold mb-2"><span>Expected Return (% p.a.)</span><span id="sip-rate-lbl" class="text-cyan-400 tabular-nums">12%</span></div>
             <input id="sip-rate" type="range" min="4" max="25" step="0.5" value="12" class="w-full accent-cyan-400" />
           </div>
-          <div>
-            <div class="flex justify-between text-xs font-semibold mb-1">
-              <span>Time Period (Years)</span>
-              <span id="sip-yrs-lbl" class="text-cyan-400">10 Years</span>
-            </div>
+          <div class="modern-sub rounded-2xl p-3.5">
+            <div class="flex justify-between text-xs font-bold mb-2"><span>Time Period</span><span id="sip-yrs-lbl" class="text-cyan-400 tabular-nums">10 Years</span></div>
             <input id="sip-yrs" type="range" min="1" max="35" step="1" value="10" class="w-full accent-cyan-400" />
           </div>
         </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-center space-y-3">
+        <div class="modern-sub rounded-2xl p-5 flex flex-col justify-center space-y-4">
           <div>
-            <div class="text-xs text-slate-400">Estimated Future Value</div>
-            <div id="sip-total" class="text-2xl sm:text-3xl font-black text-cyan-300">₹11,61,695</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-bold">Estimated Future Value</div>
+            <div id="sip-total" class="text-3xl sm:text-4xl font-black text-cyan-400 tabular-nums mt-1">₹11,61,695</div>
           </div>
-          <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800 text-xs">
-            <div>
-              <div class="text-slate-400">Invested Amount</div>
-              <div id="sip-invested" class="font-bold text-white text-sm mt-0.5">₹6,00,000</div>
-            </div>
-            <div>
-              <div class="text-slate-400">Est. Returns</div>
-              <div id="sip-returns" class="font-bold text-emerald-400 text-sm mt-0.5">₹5,61,695</div>
-            </div>
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-700/30 text-xs">
+            <div><div class="text-muted">Invested Amount</div><div id="sip-invested" class="font-extrabold text-base tabular-nums mt-0.5">₹6,00,000</div></div>
+            <div><div class="text-muted">Est. Returns</div><div id="sip-returns" class="font-extrabold text-emerald-400 text-base tabular-nums mt-0.5">₹5,61,695</div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. Age Calculator -->
-    <section id="panel-age" class="tool-panel hidden bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">Exact Age &amp; Birthday Calculator</h2>
-      <p class="text-xs text-slate-400 mt-1">Find your exact age in years, months, days, and days until your next birthday.</p>
-      <div class="mt-4 flex flex-wrap items-end gap-3">
-        <div>
-          <label for="age-dob" class="block text-xs font-semibold text-slate-300 mb-1">Date of Birth</label>
-          <input id="age-dob" type="date" value="2000-01-15" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white" />
-        </div>
-        <button id="btn-calc-age" type="button" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-sm font-bold cursor-pointer">Calculate Age</button>
-      </div>
-      <div id="age-result" class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
-          <div id="age-y" class="text-2xl font-black text-indigo-400">--</div>
-          <div class="text-xs text-slate-400">Years</div>
-        </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
-          <div id="age-m" class="text-2xl font-black text-cyan-400">--</div>
-          <div class="text-xs text-slate-400">Months</div>
-        </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
-          <div id="age-d" class="text-2xl font-black text-emerald-400">--</div>
-          <div class="text-xs text-slate-400">Days</div>
-        </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
-          <div id="age-next" class="text-2xl font-black text-amber-300">--</div>
-          <div class="text-xs text-slate-400">Next B'day (Days)</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. QR Code Generator -->
-    <section id="panel-qr" class="tool-panel hidden bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">Instant QR Code Generator</h2>
-      <p class="text-xs text-slate-400 mt-1">Create a free QR code for any website link, WhatsApp number, or UPI ID.</p>
-      <div class="mt-4 flex flex-col sm:flex-row gap-3">
-        <input id="qr-input" type="text" value="https://github.com" placeholder="Enter URL, text, or UPI link..."
-          class="flex-1 px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white" />
-        <button id="btn-gen-qr" type="button" class="px-5 py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-extrabold text-sm cursor-pointer">Generate QR</button>
-      </div>
-      <div class="mt-5 flex flex-col items-center gap-3">
-        <div class="bg-white p-3 rounded-2xl">
-          <canvas id="qr-canvas" width="180" height="180"></canvas>
-        </div>
-        <button id="btn-dl-qr" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold cursor-pointer">Download QR PNG</button>
-      </div>
-    </section>
-
-    <!-- 5. Stylish Fonts Generator -->
-    <section id="panel-bio" class="tool-panel hidden bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">Stylish Text &amp; Bio Generator</h2>
-      <p class="text-xs text-slate-400 mt-1">Type your name or Instagram bio below and tap Copy on any style.</p>
-      <input id="bio-input" type="text" value="Smart Creator" placeholder="Type your name or bio..."
-        class="mt-4 w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white" />
-      <div id="bio-list" class="mt-4 space-y-2.5"></div>
-    </section>
-
-    <!-- 6. GST & Discount Calculator -->
-    <section id="panel-gst" class="tool-panel hidden bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">GST &amp; Price Calculator</h2>
-      <p class="text-xs text-slate-400 mt-1">Calculate CGST, SGST, and final price for any product or service.</p>
-      <div class="grid sm:grid-cols-2 gap-4 mt-4">
+    <!-- 3. GST Calculator -->
+    <section id="panel-gst" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">GST &amp; Price Calculator</h3>
+      <p class="text-xs text-muted mt-0.5">Instant CGST, SGST, and inclusive/exclusive GST breakdown.</p>
+      <div class="grid sm:grid-cols-2 gap-5 mt-5">
         <div class="space-y-3">
           <div>
-            <label for="gst-amt" class="block text-xs font-semibold text-slate-300 mb-1">Amount (₹)</label>
-            <input id="gst-amt" type="number" value="1000" min="1" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white" />
+            <label for="gst-amt" class="block text-xs font-bold text-muted mb-1">Amount (₹)</label>
+            <input id="gst-amt" type="number" value="1000" min="1" class="modern-sub w-full px-4 py-2.5 rounded-2xl text-sm font-semibold focus:outline-none" />
           </div>
           <div>
-            <label for="gst-rate" class="block text-xs font-semibold text-slate-300 mb-1">GST Slab (%)</label>
-            <select id="gst-rate" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+            <label for="gst-rate" class="block text-xs font-bold text-muted mb-1">GST Slab (%)</label>
+            <select id="gst-rate" class="modern-sub w-full px-4 py-2.5 rounded-2xl text-sm font-semibold focus:outline-none">
               <option value="5">5% GST</option>
               <option value="12">12% GST</option>
               <option value="18" selected>18% GST</option>
@@ -276,70 +267,195 @@
             </select>
           </div>
           <div class="flex gap-2">
-            <button id="gst-mode-excl" type="button" class="flex-1 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white cursor-pointer">Add GST (+)</button>
-            <button id="gst-mode-incl" type="button" class="flex-1 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 cursor-pointer">Remove GST (-)</button>
+            <button id="gst-mode-excl" type="button" class="flex-1 py-2.5 rounded-xl text-xs font-bold bg-indigo-500 text-white cursor-pointer">Add GST (+)</button>
+            <button id="gst-mode-incl" type="button" class="modern-sub flex-1 py-2.5 rounded-xl text-xs font-bold text-muted cursor-pointer">Remove GST (-)</button>
           </div>
         </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-center space-y-2.5 text-xs">
-          <div class="flex justify-between"><span class="text-slate-400">Net Price</span><span id="gst-net" class="font-bold text-white">₹1,000</span></div>
-          <div class="flex justify-between"><span class="text-slate-400">CGST + SGST</span><span id="gst-tax" class="font-bold text-amber-300">₹180 (₹90 + ₹90)</span></div>
-          <div class="flex justify-between pt-2 border-t border-slate-800 text-sm"><span class="font-bold text-slate-200">Total Amount</span><span id="gst-total" class="font-black text-emerald-400 text-lg">₹1,180</span></div>
+        <div class="modern-sub rounded-2xl p-5 flex flex-col justify-center space-y-3 text-xs">
+          <div class="flex justify-between"><span class="text-muted">Net Price</span><span id="gst-net" class="font-bold text-sm tabular-nums">₹1,000</span></div>
+          <div class="flex justify-between"><span class="text-muted">CGST + SGST</span><span id="gst-tax" class="font-bold text-amber-400 text-sm tabular-nums">₹180 (₹90 + ₹90)</span></div>
+          <div class="flex justify-between pt-3 border-t border-slate-700/30 text-sm"><span class="font-bold">Total Amount</span><span id="gst-total" class="font-black text-emerald-400 text-xl tabular-nums">₹1,180</span></div>
         </div>
       </div>
     </section>
 
-    <!-- 7. Strong Password Generator -->
-    <section id="panel-pwd" class="tool-panel hidden bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
-      <h2 class="text-xl font-extrabold">Strong Password Generator</h2>
-      <p class="text-xs text-slate-400 mt-1">Generate secure, uncrackable passwords with one tap.</p>
-      <div class="mt-4 flex flex-col sm:flex-row gap-2.5">
-        <input id="pwd-out" type="text" readonly value="" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 font-mono text-sm text-emerald-300" />
-        <button id="btn-gen-pwd" type="button" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold cursor-pointer">Generate</button>
-        <button id="btn-copy-pwd" type="button" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold cursor-pointer">Copy</button>
+    <!-- 4. Age Calculator -->
+    <section id="panel-age" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">Exact Age &amp; Birthday Calculator</h3>
+      <p class="text-xs text-muted mt-0.5">Find your exact age and countdown to your next birthday.</p>
+      <div class="mt-4 flex flex-wrap items-end gap-3">
+        <div>
+          <label for="age-dob" class="block text-xs font-bold text-muted mb-1">Date of Birth</label>
+          <input id="age-dob" type="date" value="2000-01-15" class="modern-sub px-4 py-2.5 rounded-2xl text-sm font-semibold" />
+        </div>
+        <button id="btn-calc-age" type="button" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold cursor-pointer">Calculate</button>
       </div>
-      <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-300">
-        <label class="flex items-center gap-2">Length: <span id="pwd-len-lbl" class="font-bold text-indigo-400">14</span>
+      <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+        <div class="modern-sub rounded-2xl p-4"><div id="age-y" class="text-2xl font-black text-indigo-400 tabular-nums">--</div><div class="text-xs text-muted mt-1">Years</div></div>
+        <div class="modern-sub rounded-2xl p-4"><div id="age-m" class="text-2xl font-black text-cyan-400 tabular-nums">--</div><div class="text-xs text-muted mt-1">Months</div></div>
+        <div class="modern-sub rounded-2xl p-4"><div id="age-d" class="text-2xl font-black text-emerald-400 tabular-nums">--</div><div class="text-xs text-muted mt-1">Days</div></div>
+        <div class="modern-sub rounded-2xl p-4"><div id="age-next" class="text-2xl font-black text-amber-400 tabular-nums">--</div><div class="text-xs text-muted mt-1">Next B'day (Days)</div></div>
+      </div>
+    </section>
+
+    <!-- 5. QR Generator -->
+    <section id="panel-qr" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">Instant QR Code Generator</h3>
+      <p class="text-xs text-muted mt-0.5">Create a downloadable QR code for any link, WhatsApp, or UPI ID.</p>
+      <div class="mt-4 flex flex-col sm:flex-row gap-3">
+        <input id="qr-input" type="text" value="https://yashubakedyal-alt.github.io/smart-tools/" placeholder="Enter URL, text, or UPI link..."
+          class="modern-sub flex-1 px-4 py-2.5 rounded-2xl text-sm" />
+        <button id="btn-gen-qr" type="button" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-500 text-white font-extrabold text-sm cursor-pointer">Generate QR</button>
+      </div>
+      <div class="mt-5 flex flex-col items-center gap-3">
+        <div class="bg-white p-3.5 rounded-2xl shadow-lg">
+          <canvas id="qr-canvas" width="180" height="180"></canvas>
+        </div>
+        <button id="btn-dl-qr" type="button" class="modern-sub px-4 py-2 rounded-xl text-xs font-bold cursor-pointer">⬇ Download QR PNG</button>
+      </div>
+    </section>
+
+    <!-- 6. Password Generator -->
+    <section id="panel-pwd" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">Strong Password Generator</h3>
+      <p class="text-xs text-muted mt-0.5">Create uncrackable passwords locally with one click.</p>
+      <div class="mt-4 flex flex-col sm:flex-row gap-2.5">
+        <input id="pwd-out" type="text" readonly value="" class="modern-sub flex-1 px-4 py-2.5 rounded-2xl font-mono text-sm text-emerald-400 font-bold" />
+        <button id="btn-gen-pwd" type="button" class="px-5 py-2.5 rounded-2xl bg-indigo-500 text-white text-xs font-bold cursor-pointer">Generate</button>
+        <button id="btn-copy-pwd" type="button" class="modern-sub px-5 py-2.5 rounded-2xl text-xs font-bold cursor-pointer">Copy</button>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-muted">
+        <label class="flex items-center gap-2 font-semibold">Length: <span id="pwd-len-lbl" class="font-bold text-indigo-400">14</span>
           <input id="pwd-len" type="range" min="8" max="28" value="14" class="accent-indigo-500" />
         </label>
-        <label class="flex items-center gap-1.5 cursor-pointer"><input id="pwd-sym" type="checkbox" checked class="accent-indigo-500" /> Symbols (!@#)</label>
+        <label class="flex items-center gap-1.5 font-semibold cursor-pointer"><input id="pwd-sym" type="checkbox" checked class="accent-indigo-500" /> Symbols (!@#)</label>
+      </div>
+    </section>
+
+    <!-- 7. Stylish Fonts -->
+    <section id="panel-bio" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">Stylish Text &amp; Bio Generator</h3>
+      <p class="text-xs text-muted mt-0.5">Type your name or Instagram bio and tap Copy on any style.</p>
+      <input id="bio-input" type="text" value="Smart Creator" placeholder="Type your name or bio..."
+        class="modern-sub mt-4 w-full px-4 py-2.5 rounded-2xl text-sm" />
+      <div id="bio-list" class="mt-4 space-y-2.5"></div>
+    </section>
+
+    <!-- 9. Instant Language Translator -->
+    <section id="panel-trans" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h3 class="text-xl font-black">Instant Language Translator</h3>
+          <p class="text-xs text-muted mt-0.5">Translate text between English, Hindi, Punjabi, Spanish &amp; more.</p>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center gap-2">
+        <select id="tr-from" class="modern-sub flex-1 min-w-[110px] px-3 py-2 rounded-xl text-xs font-bold">
+          <option value="en" selected>English</option>
+          <option value="hi">Hindi (हिंदी)</option>
+          <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="ar">Arabic</option>
+        </select>
+        <button id="btn-tr-swap" type="button" class="modern-sub px-3 py-2 rounded-xl text-xs font-black cursor-pointer">⇄</button>
+        <select id="tr-to" class="modern-sub flex-1 min-w-[110px] px-3 py-2 rounded-xl text-xs font-bold">
+          <option value="hi" selected>Hindi (हिंदी)</option>
+          <option value="en">English</option>
+          <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="ar">Arabic</option>
+        </select>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 mt-3">
+        <textarea id="tr-in" rows="3" placeholder="Type text to translate..." class="modern-sub w-full p-3 rounded-xl text-sm resize-none">Hello, welcome to SmartTools Hub!</textarea>
+        <div class="modern-sub rounded-xl p-3 flex flex-col justify-between">
+          <div id="tr-out" class="text-sm font-semibold text-cyan-300 min-h-[56px]">नमस्ते, SmartTools Hub में आपका स्वागत है!</div>
+          <div class="flex items-center justify-end gap-2 mt-2">
+            <button id="btn-tr-speak" type="button" class="modern-card px-2.5 py-1 rounded-lg text-xs font-bold cursor-pointer">🔊 Listen</button>
+            <button id="btn-tr-copy" type="button" class="modern-card px-2.5 py-1 rounded-lg text-xs font-bold cursor-pointer">Copy</button>
+          </div>
+        </div>
+      </div>
+      <button id="btn-tr-go" type="button" class="mt-3 w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-xs font-extrabold cursor-pointer">
+        Translate Now
+      </button>
+    </section>
+
+    <!-- 8. Unit Converter -->
+    <section id="panel-conv" class="tool-panel hidden modern-card rounded-2xl p-4 sm:p-5 shadow-xl">
+      <h3 class="text-xl font-black">Smart Unit Converter</h3>
+      <p class="text-xs text-muted mt-0.5">Convert Length, Weight, Temperature, and Data Size instantly.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-5">
+        <div class="space-y-3">
+          <div>
+            <label for="conv-type" class="block text-xs font-bold text-muted mb-1">Category</label>
+            <select id="conv-type" class="modern-sub w-full px-4 py-2.5 rounded-2xl text-sm font-semibold">
+              <option value="len">Length (Km ↔ Miles)</option>
+              <option value="wt">Weight (Kg ↔ Pounds)</option>
+              <option value="temp">Temperature (°C ↔ °F)</option>
+              <option value="data">Data (GB ↔ MB)</option>
+            </select>
+          </div>
+          <div>
+            <label for="conv-val" class="block text-xs font-bold text-muted mb-1">Enter Value</label>
+            <input id="conv-val" type="number" value="10" class="modern-sub w-full px-4 py-2.5 rounded-2xl text-sm font-semibold" />
+          </div>
+        </div>
+        <div class="modern-sub rounded-2xl p-5 flex flex-col justify-center space-y-2">
+          <div class="text-xs uppercase tracking-wider text-muted font-bold">Converted Result</div>
+          <div id="conv-out" class="text-2xl sm:text-3xl font-black text-cyan-400 tabular-nums">10 Km = 6.21 Miles</div>
+          <div id="conv-rev" class="text-xs text-muted tabular-nums">10 Miles = 16.09 Km</div>
+        </div>
       </div>
     </section>
 
     <!-- In-Content AdSense Slot -->
-    <div class="ad-slot rounded-xl p-4 text-center text-xs text-slate-400">
-      <span class="font-semibold text-slate-300">AdSense In-Article / Native Ad Slot</span> — High-visibility placement
+    <div class="ad-slot rounded-2xl p-4 text-center text-xs text-muted">
+      <span class="font-semibold">AdSense In-Article / Native Ad Slot</span> — High-visibility placement
     </div>
 
-    <!-- SEO & AdSense Approval Helpful Content -->
-    <section class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 text-xs text-slate-300 space-y-3 leading-relaxed">
-      <h3 class="text-sm font-bold text-white">Frequently Asked Questions (FAQ)</h3>
-      <div>
-        <div class="font-bold text-slate-200">How is Loan EMI calculated?</div>
-        <p class="text-slate-400 mt-0.5">Our EMI calculator uses the standard reducing-balance formula to show your exact monthly installment, total interest, and principal split.</p>
+    <!-- Compact Collapsible SEO FAQ -->
+    <details class="modern-card rounded-2xl p-3.5 text-xs">
+      <summary class="font-bold cursor-pointer select-none">Frequently Asked Questions (FAQ) ▾</summary>
+      <div class="grid sm:grid-cols-3 gap-2.5 mt-3">
+        <div class="modern-sub rounded-xl p-3"><div class="font-bold">Loan EMI?</div><p class="text-muted mt-0.5">Standard reducing-balance formula for monthly EMI &amp; interest.</p></div>
+        <div class="modern-sub rounded-xl p-3"><div class="font-bold">CGST &amp; SGST?</div><p class="text-muted mt-0.5">Choose 5%–28% slab and Add/Remove GST instantly.</p></div>
+        <div class="modern-sub rounded-xl p-3"><div class="font-bold">Private?</div><p class="text-muted mt-0.5">All tools run 100% locally inside your browser.</p></div>
       </div>
-      <div>
-        <div class="font-bold text-slate-200">How do I calculate CGST &amp; SGST?</div>
-        <p class="text-slate-400 mt-0.5">Open the GST Calculator tab, enter any amount, select 5%, 12%, 18%, or 28%, and toggle between Add GST or Remove GST.</p>
-      </div>
-      <div>
-        <div class="font-bold text-slate-200">Are my calculations and QR codes private?</div>
-        <p class="text-slate-400 mt-0.5">Yes, all 7 tools run 100% locally in your browser without sending your numbers or links to any external server.</p>
-      </div>
-    </section>
+    </details>
   </main>
 
-  <footer class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
-    © 2026 SmartTools Hub • Built for fast daily calculations
+  <footer class="border-t border-slate-800/40 py-4 text-center text-xs text-muted px-4">
+    © 2026 SmartTools Hub • Contact: <a href="mailto:yashubakedyal@gmail.com" class="text-cyan-400 hover:underline font-semibold">yashubakedyal@gmail.com</a>
   </footer>
 
-  <!-- Info Modal (About / Privacy Policy for AdSense readiness) -->
-  <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-5 space-y-3">
+  <!-- Smart Helper Chat Modal -->
+  <div id="chat-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="modern-card rounded-3xl max-w-md w-full p-5 space-y-3 shadow-2xl">
       <div class="flex items-center justify-between">
-        <h3 id="modal-title" class="text-lg font-extrabold text-white">Privacy Policy</h3>
-        <button id="btn-close-modal" type="button" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold cursor-pointer">✕</button>
+        <h3 class="text-base font-black">💬 SmartTools Assistant</h3>
+        <button id="btn-chat-close" type="button" class="modern-sub px-2.5 py-1 rounded-xl text-xs font-bold cursor-pointer">✕</button>
       </div>
-      <p id="modal-body" class="text-xs text-slate-300 leading-relaxed"></p>
+      <div id="chat-log" class="modern-sub rounded-2xl p-3 h-48 overflow-y-auto space-y-2 text-xs">
+        <div class="text-cyan-300 font-semibold">Bot: Namaste! Ask me about EMI, SIP, GST, Age, QR, or Converter.</div>
+      </div>
+      <div class="flex gap-2">
+        <input id="chat-input" type="text" placeholder="Type a question (e.g. EMI kya hai?)..." class="modern-sub flex-1 px-3 py-2 rounded-xl text-xs" />
+        <button id="btn-chat-send" type="button" class="px-4 py-2 rounded-xl bg-indigo-500 text-white text-xs font-bold cursor-pointer">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="modern-card rounded-3xl max-w-md w-full p-6 space-y-3 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 id="modal-title" class="text-lg font-black">Privacy Policy</h3>
+        <button id="btn-close-modal" type="button" class="modern-sub px-2.5 py-1 rounded-xl text-xs font-bold cursor-pointer">✕</button>
+      </div>
+      <p id="modal-body" class="text-xs text-muted leading-relaxed"></p>
     </div>
   </div>
 
@@ -347,25 +463,41 @@
     (function () {
       const tabBtns = document.querySelectorAll('.tab-btn');
       const panels = document.querySelectorAll('.tool-panel');
+      const activeCls = 'tab-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-md shadow-indigo-500/20 cursor-pointer transition';
+      const idleCls = 'tab-btn modern-card shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-muted hover:opacity-90 cursor-pointer transition';
 
       tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const target = btn.dataset.tab;
-          tabBtns.forEach(b => {
-            b.className = b === btn
-              ? 'tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white cursor-pointer'
-              : 'tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer';
-          });
+          tabBtns.forEach(b => { b.className = b === btn ? activeCls : idleCls; });
           panels.forEach(p => p.classList.toggle('hidden', p.id !== 'panel-' + target));
         });
+      });
+
+      // Theme Toggle
+      const btnTheme = document.getElementById('btn-theme');
+      btnTheme.addEventListener('click', () => {
+        const isLight = document.body.classList.toggle('light-mode');
+        btnTheme.textContent = isLight ? '☀️ Light' : '🌙 Dark';
+      });
+
+      // Share Button
+      const btnShare = document.getElementById('btn-share-site');
+      btnShare.addEventListener('click', () => {
+        const url = window.location.href;
+        if (navigator.share) {
+          navigator.share({ title: 'SmartTools Hub', text: 'Free EMI, SIP, GST, Age & QR Tools!', url }).catch(() => {});
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).catch(() => {});
+          btnShare.textContent = 'Copied!';
+          setTimeout(() => { btnShare.textContent = 'Share'; }, 1200);
+        }
       });
 
       const fmtINR = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
 
       // 1. EMI
-      const emiAmt = document.getElementById('emi-amt');
-      const emiRate = document.getElementById('emi-rate');
-      const emiYrs = document.getElementById('emi-yrs');
+      const emiAmt = document.getElementById('emi-amt'), emiRate = document.getElementById('emi-rate'), emiYrs = document.getElementById('emi-yrs');
       function calcEMI() {
         const P = Number(emiAmt.value), r = Number(emiRate.value) / 12 / 100, n = Number(emiYrs.value) * 12;
         document.getElementById('emi-amt-lbl').textContent = fmtINR(P);
@@ -382,9 +514,7 @@
       [emiAmt, emiRate, emiYrs].forEach(el => el.addEventListener('input', calcEMI));
 
       // 2. SIP
-      const sipAmt = document.getElementById('sip-amt');
-      const sipRate = document.getElementById('sip-rate');
-      const sipYrs = document.getElementById('sip-yrs');
+      const sipAmt = document.getElementById('sip-amt'), sipRate = document.getElementById('sip-rate'), sipYrs = document.getElementById('sip-yrs');
       function calcSIP() {
         const P = Number(sipAmt.value), r = Number(sipRate.value) / 12 / 100, n = Number(sipYrs.value) * 12;
         document.getElementById('sip-amt-lbl').textContent = fmtINR(P);
@@ -398,15 +528,30 @@
       }
       [sipAmt, sipRate, sipYrs].forEach(el => el.addEventListener('input', calcSIP));
 
-      // 3. Age
+      // 3. GST
+      let gstExcl = true;
+      const gstAmt = document.getElementById('gst-amt'), gstRate = document.getElementById('gst-rate');
+      const btnExcl = document.getElementById('gst-mode-excl'), btnIncl = document.getElementById('gst-mode-incl');
+      function calcGST() {
+        const val = Math.max(0, Number(gstAmt.value) || 0), r = Number(gstRate.value) || 18;
+        let net = val, tax = 0, total = val;
+        if (gstExcl) { tax = (val * r) / 100; total = val + tax; }
+        else { net = val / (1 + r / 100); tax = val - net; total = val; }
+        const half = tax / 2;
+        document.getElementById('gst-net').textContent = fmtINR(net);
+        document.getElementById('gst-tax').textContent = fmtINR(tax) + ' (' + fmtINR(half) + ' + ' + fmtINR(half) + ')';
+        document.getElementById('gst-total').textContent = fmtINR(total);
+      }
+      btnExcl.addEventListener('click', () => { gstExcl = true; btnExcl.className = 'flex-1 py-2.5 rounded-xl text-xs font-bold bg-indigo-500 text-white cursor-pointer'; btnIncl.className = 'modern-sub flex-1 py-2.5 rounded-xl text-xs font-bold text-muted cursor-pointer'; calcGST(); });
+      btnIncl.addEventListener('click', () => { gstExcl = false; btnIncl.className = 'flex-1 py-2.5 rounded-xl text-xs font-bold bg-indigo-500 text-white cursor-pointer'; btnExcl.className = 'modern-sub flex-1 py-2.5 rounded-xl text-xs font-bold text-muted cursor-pointer'; calcGST(); });
+      gstAmt.addEventListener('input', calcGST); gstRate.addEventListener('change', calcGST);
+
+      // 4. Age
       function calcAge() {
         const dobVal = document.getElementById('age-dob').value;
         if (!dobVal) return;
-        const dob = new Date(dobVal);
-        const now = new Date();
-        let y = now.getFullYear() - dob.getFullYear();
-        let m = now.getMonth() - dob.getMonth();
-        let d = now.getDate() - dob.getDate();
+        const dob = new Date(dobVal), now = new Date();
+        let y = now.getFullYear() - dob.getFullYear(), m = now.getMonth() - dob.getMonth(), d = now.getDate() - dob.getDate();
         if (d < 0) { m -= 1; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
         if (m < 0) { y -= 1; m += 12; }
         let next = new Date(now.getFullYear(), dob.getMonth(), dob.getDate());
@@ -419,36 +564,44 @@
       }
       document.getElementById('btn-calc-age').addEventListener('click', calcAge);
 
-      // 4. QR
+      // 5. QR
       const qrCanvas = document.getElementById('qr-canvas');
       function genQR() {
-        const txt = document.getElementById('qr-input').value.trim() || 'https://github.com';
-        if (typeof QRCode !== 'undefined') {
-          QRCode.toCanvas(qrCanvas, txt, { width: 180, margin: 1 }, () => {});
-        } else {
-          const c = qrCanvas.getContext('2d');
-          c.fillStyle = '#fff'; c.fillRect(0, 0, 180, 180);
-          c.fillStyle = '#0f172a'; c.font = 'bold 12px sans-serif'; c.textAlign = 'center';
-          c.fillText('QR Ready Online', 90, 90);
-        }
+        const txt = document.getElementById('qr-input').value.trim() || 'https://yashubakedyal-alt.github.io/smart-tools/';
+        if (typeof QRCode !== 'undefined') QRCode.toCanvas(qrCanvas, txt, { width: 180, margin: 1 }, () => {});
       }
       document.getElementById('btn-gen-qr').addEventListener('click', genQR);
       document.getElementById('btn-dl-qr').addEventListener('click', () => {
-        const a = document.createElement('a');
-        a.download = 'smarttools-qr.png';
-        a.href = qrCanvas.toDataURL('image/png');
-        a.click();
+        const a = document.createElement('a'); a.download = 'smarttools-qr.png'; a.href = qrCanvas.toDataURL('image/png'); a.click();
       });
 
-      // 5. Stylish Fonts
-      const bioInput = document.getElementById('bio-input');
-      const bioList = document.getElementById('bio-list');
+      // 6. Password
+      const pwdLen = document.getElementById('pwd-len'), pwdSym = document.getElementById('pwd-sym'), pwdOut = document.getElementById('pwd-out');
+      function genPwd() {
+        const len = Number(pwdLen.value);
+        document.getElementById('pwd-len-lbl').textContent = String(len);
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789' + (pwdSym.checked ? '!@#$%&*?' : '');
+        let out = '';
+        for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * chars.length)];
+        pwdOut.value = out;
+      }
+      document.getElementById('btn-gen-pwd').addEventListener('click', genPwd);
+      pwdLen.addEventListener('input', genPwd); pwdSym.addEventListener('change', genPwd);
+      document.getElementById('btn-copy-pwd').addEventListener('click', () => {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(pwdOut.value).catch(() => {});
+        const b = document.getElementById('btn-copy-pwd'); b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = 'Copy'; }, 1200);
+      });
+
+      // 7. Fonts
+      const bioInput = document.getElementById('bio-input'), bioList = document.getElementById('bio-list');
       const STYLES = [
-        (t) => '✦ ' + t.toUpperCase() + ' ✦',
+        (t) => '✧˖° ' + t.toLowerCase() + ' °˖✧',
         (t) => t.split('').map(c => ({a:'𝗮',b:'𝗯',c:'𝗰',d:'𝗱',e:'𝗲',f:'𝗳',g:'𝗴',h:'𝗵',i:'𝗶',j:'𝗷',k:'𝗸',l:'𝗹',m:'𝗺',n:'𝗻',o:'𝗼',p:'𝗽',q:'𝗾',r:'𝗿',s:'𝘀',t:'𝘁',u:'𝘂',v:'𝘃',w:'𝘄',x:'𝘅',y:'𝘆',z:'𝘇'}[c.toLowerCase()] || c)).join(''),
+        (t) => t.split('').map(c => ({a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫'}[c.toLowerCase()] || c)).join(''),
         (t) => t.split('').map(c => ({a:'𝒶',b:'𝒷',c:'𝒸',d:'𝒹',e:'𝑒',f:'𝒻',g:'𝑔',h:'𝒽',i:'𝒾',j:'𝒿',k:'𝓀',l:'𝓁',m:'𝓂',n:'𝓃',o:'𝑜',p:'𝓅',q:'𝓆',r:'𝓇',s:'𝓈',t:'𝓉',u:'𝓊',v:'𝓋',w:'𝓌',x:'𝓍',y:'𝓎',z:'𝓏'}[c.toLowerCase()] || c)).join(''),
-        (t) => '【 ' + t + ' 】',
-        (t) => '⚡ ' + t.split('').join(' ') + ' ⚡'
+        (t) => '『 ' + t.split('').join(' ') + ' 』',
+        (t) => '⚡ ' + t.toUpperCase() + ' ⚡'
       ];
       function renderBios() {
         const val = bioInput.value || 'Smart Creator';
@@ -456,37 +609,32 @@
         STYLES.forEach(fn => {
           const styled = fn(val);
           const row = document.createElement('div');
-          row.className = 'flex items-center justify-between gap-3 bg-slate-950/70 border border-slate-800 rounded-xl px-4 py-2.5';
+          row.className = 'modern-sub flex items-center justify-between gap-3 rounded-2xl px-4 py-2.5';
           const span = document.createElement('span');
-          span.className = 'text-sm text-white truncate';
-          span.textContent = styled;
+          span.className = 'text-sm truncate font-semibold'; span.textContent = styled;
           const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'shrink-0 px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-bold cursor-pointer';
+          btn.type = 'button'; btn.className = 'shrink-0 px-3 py-1 rounded-xl bg-indigo-500 text-white text-xs font-bold cursor-pointer';
           btn.textContent = 'Copy';
           btn.addEventListener('click', () => {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(styled).catch(() => {});
-            } else {
-              const ta = document.createElement('textarea');
-              ta.value = styled; document.body.appendChild(ta); ta.select();
-              try { document.execCommand('copy'); } catch (e) {}
-              document.body.removeChild(ta);
-            }
-            btn.textContent = 'Copied!';
-            setTimeout(() => { btn.textContent = 'Copy'; }, 1200);
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(styled).catch(() => {});
+            btn.textContent = 'Copied!'; setTimeout(() => { btn.textContent = 'Copy'; }, 1200);
           });
-          row.appendChild(span); row.appendChild(btn);
-          bioList.appendChild(row);
+          row.appendChild(span); row.appendChild(btn); bioList.appendChild(row);
         });
       }
       bioInput.addEventListener('input', renderBios);
+
+      // Search
+      document.getElementById('tool-search').addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        tabBtns.forEach(b => b.classList.toggle('hidden', q && !b.textContent.toLowerCase().includes(q) && !b.dataset.tab.includes(q)));
+      });
 
       // Modal
       const infoModal = document.getElementById('info-modal');
       document.getElementById('btn-open-about').addEventListener('click', () => {
         document.getElementById('modal-title').textContent = 'About SmartTools Hub';
-        document.getElementById('modal-body').textContent = 'SmartTools Hub provides free, fast daily calculators and utility tools that run 100% inside your browser.';
+        document.getElementById('modal-body').textContent = 'SmartTools Hub provides free, fast daily calculators and utility tools that run 100% inside your browser. For queries or feedback, contact: yashubakedyal@gmail.com';
         infoModal.classList.remove('hidden'); infoModal.classList.add('flex');
       });
       document.getElementById('btn-open-privacy').addEventListener('click', () => {
@@ -498,76 +646,130 @@
         infoModal.classList.add('hidden'); infoModal.classList.remove('flex');
       });
 
-      // Search filter for tabs
-      document.getElementById('tool-search').addEventListener('input', (e) => {
-        const q = e.target.value.trim().toLowerCase();
-        tabBtns.forEach(b => {
-          const match = !q || b.textContent.toLowerCase().includes(q) || b.dataset.tab.includes(q);
-          b.classList.toggle('hidden', !match);
-        });
+      // Language Switcher (EN <-> HI)
+      let lang = 'en';
+      const btnLang = document.getElementById('btn-lang');
+      const heroTitle = document.getElementById('hero-title');
+      const heroSub = document.getElementById('hero-sub');
+      const TAB_LABELS = {
+        en: { emi: '💳 EMI', sip: '📈 SIP', gst: '🧾 GST', age: '🎂 Age', qr: '📱 QR Code', pwd: '🔐 Password', trans: '🌍 Translate', conv: '🔄 Converter', bio: '✨ Fonts' },
+        hi: { emi: '💳 ईएमआई', sip: '📈 एसआईपी', gst: '🧾 जीएसटी', age: '🎂 उम्र', qr: '📱 क्यूआर कोड', pwd: '🔐 पासवर्ड', trans: '🌍 अनुवाद', conv: '🔄 कन्वर्टर', bio: '✨ फ़ॉन्ट्स' }
+      };
+      btnLang.addEventListener('click', () => {
+        lang = lang === 'en' ? 'hi' : 'en';
+        btnLang.textContent = lang === 'en' ? '🌐 EN' : '🌐 हिंदी';
+        heroTitle.textContent = lang === 'en' ? 'All-in-One Smart Calculators' : 'ऑल-इन-वन स्मार्ट कैलकुलेटर';
+        heroSub.textContent = lang === 'en'
+          ? 'Pick a tool below for instant EMI, SIP, GST, Age, Converter, QR & Password tools.'
+          : 'ईएमआई, एसआईपी, जीएसटी, उम्र, कन्वर्टर, क्यूआर कोड और पासवर्ड के लिए नीचे टूल चुनें।';
+        tabBtns.forEach(b => { b.textContent = TAB_LABELS[lang][b.dataset.tab]; });
       });
 
-      // 6. GST Logic
-      let gstExcl = true;
-      const gstAmt = document.getElementById('gst-amt');
-      const gstRate = document.getElementById('gst-rate');
-      const btnExcl = document.getElementById('gst-mode-excl');
-      const btnIncl = document.getElementById('gst-mode-incl');
-      function calcGST() {
-        const val = Math.max(0, Number(gstAmt.value) || 0);
-        const r = Number(gstRate.value) || 18;
-        let net = val, tax = 0, total = val;
-        if (gstExcl) {
-          tax = (val * r) / 100;
-          total = val + tax;
+      // Unit Converter
+      const convType = document.getElementById('conv-type');
+      const convVal = document.getElementById('conv-val');
+      function calcConv() {
+        const v = Number(convVal.value) || 0;
+        const t = convType.value;
+        let out = '', rev = '';
+        if (t === 'len') {
+          out = v + ' Km = ' + (v * 0.621371).toFixed(2) + ' Miles';
+          rev = v + ' Miles = ' + (v / 0.621371).toFixed(2) + ' Km';
+        } else if (t === 'wt') {
+          out = v + ' Kg = ' + (v * 2.20462).toFixed(2) + ' Lbs';
+          rev = v + ' Lbs = ' + (v / 2.20462).toFixed(2) + ' Kg';
+        } else if (t === 'temp') {
+          out = v + ' °C = ' + ((v * 9) / 5 + 32).toFixed(1) + ' °F';
+          rev = v + ' °F = ' + (((v - 32) * 5) / 9).toFixed(1) + ' °C';
         } else {
-          net = val / (1 + r / 100);
-          tax = val - net;
-          total = val;
+          out = v + ' GB = ' + (v * 1024).toLocaleString() + ' MB';
+          rev = v + ' MB = ' + (v / 1024).toFixed(3) + ' GB';
         }
-        const half = tax / 2;
-        document.getElementById('gst-net').textContent = fmtINR(net);
-        document.getElementById('gst-tax').textContent = fmtINR(tax) + ' (' + fmtINR(half) + ' + ' + fmtINR(half) + ')';
-        document.getElementById('gst-total').textContent = fmtINR(total);
+        document.getElementById('conv-out').textContent = out;
+        document.getElementById('conv-rev').textContent = rev;
       }
-      btnExcl.addEventListener('click', () => {
-        gstExcl = true;
-        btnExcl.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white cursor-pointer';
-        btnIncl.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 cursor-pointer';
-        calcGST();
-      });
-      btnIncl.addEventListener('click', () => {
-        gstExcl = false;
-        btnIncl.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white cursor-pointer';
-        btnExcl.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 cursor-pointer';
-        calcGST();
-      });
-      gstAmt.addEventListener('input', calcGST);
-      gstRate.addEventListener('change', calcGST);
+      convType.addEventListener('change', calcConv);
+      convVal.addEventListener('input', calcConv);
 
-      // 7. Password Generator Logic
-      const pwdLen = document.getElementById('pwd-len');
-      const pwdSym = document.getElementById('pwd-sym');
-      const pwdOut = document.getElementById('pwd-out');
-      function genPwd() {
-        const len = Number(pwdLen.value);
-        document.getElementById('pwd-len-lbl').textContent = String(len);
-        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789' + (pwdSym.checked ? '!@#$%&*?' : '');
-        let out = '';
-        for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * chars.length)];
-        pwdOut.value = out;
+      // Quick Helper Chat
+      const chatModal = document.getElementById('chat-modal');
+      const chatLog = document.getElementById('chat-log');
+      const chatInput = document.getElementById('chat-input');
+      document.getElementById('btn-chat-open').addEventListener('click', () => {
+        chatModal.classList.remove('hidden'); chatModal.classList.add('flex');
+      });
+      document.getElementById('btn-chat-close').addEventListener('click', () => {
+        chatModal.classList.add('hidden'); chatModal.classList.remove('flex');
+      });
+      function sendChat() {
+        const q = chatInput.value.trim();
+        if (!q) return;
+        const uDiv = document.createElement('div');
+        uDiv.className = 'text-right font-semibold';
+        uDiv.textContent = 'You: ' + q;
+        chatLog.appendChild(uDiv);
+        const lq = q.toLowerCase();
+        let ans = 'Use the top tabs to calculate EMI, SIP, GST, Age, Units, QR Codes, or Passwords for free!';
+        if (lq.includes('emi') || lq.includes('loan')) ans = 'EMI tab mein Loan Amount, Interest Rate, aur Years set karein — monthly EMI aur interest turant dikh jayega.';
+        else if (lq.includes('sip')) ans = 'SIP tab se aap monthly mutual fund investment ka future value calculate kar sakte hain.';
+        else if (lq.includes('gst')) ans = 'GST tab mein 5%, 12%, 18%, ya 28% slab chunein aur CGST/SGST dekhein.';
+        else if (lq.includes('qr')) ans = 'QR Code tab mein koi bhi link ya UPI ID daalkar PNG QR download kar sakte hain.';
+        const bDiv = document.createElement('div');
+        bDiv.className = 'text-cyan-300 font-semibold';
+        bDiv.textContent = 'Bot: ' + ans;
+        chatLog.appendChild(bDiv);
+        chatInput.value = '';
+        chatLog.scrollTop = chatLog.scrollHeight;
       }
-      document.getElementById('btn-gen-pwd').addEventListener('click', genPwd);
-      pwdLen.addEventListener('input', genPwd);
-      pwdSym.addEventListener('change', genPwd);
-      document.getElementById('btn-copy-pwd').addEventListener('click', () => {
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(pwdOut.value).catch(() => {});
-        const b = document.getElementById('btn-copy-pwd');
-        b.textContent = 'Copied!';
+      document.getElementById('btn-chat-send').addEventListener('click', sendChat);
+      chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendChat(); });
+
+      // 9. Translator Logic
+      const trFrom = document.getElementById('tr-from');
+      const trTo = document.getElementById('tr-to');
+      const trIn = document.getElementById('tr-in');
+      const trOut = document.getElementById('tr-out');
+      const btnTrGo = document.getElementById('btn-tr-go');
+      async function runTranslate() {
+        const text = trIn.value.trim();
+        if (!text) { trOut.textContent = ''; return; }
+        if (trFrom.value === trTo.value) { trOut.textContent = text; return; }
+        trOut.textContent = 'Translating...';
+        try {
+          const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=' + trFrom.value + '|' + trTo.value;
+          const res = await fetch(url);
+          const data = await res.json();
+          if (data && data.responseData && data.responseData.translatedText) {
+            trOut.textContent = data.responseData.translatedText;
+          } else {
+            trOut.textContent = 'Translation unavailable right now. Please try again.';
+          }
+        } catch (e) {
+          trOut.textContent = 'Check internet connection and try again.';
+        }
+      }
+      btnTrGo.addEventListener('click', runTranslate);
+      document.getElementById('btn-tr-swap').addEventListener('click', () => {
+        const tmp = trFrom.value; trFrom.value = trTo.value; trTo.value = tmp;
+        const t2 = trOut.textContent;
+        if (t2 && t2 !== 'Translating...') trIn.value = t2;
+        runTranslate();
+      });
+      document.getElementById('btn-tr-copy').addEventListener('click', () => {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(trOut.textContent).catch(() => {});
+        const b = document.getElementById('btn-tr-copy'); b.textContent = 'Copied!';
         setTimeout(() => { b.textContent = 'Copy'; }, 1200);
       });
+      document.getElementById('btn-tr-speak').addEventListener('click', () => {
+        if ('speechSynthesis' in window && trOut.textContent) {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(trOut.textContent);
+          u.lang = trTo.value;
+          window.speechSynthesis.speak(u);
+        }
+      });
 
-      calcEMI(); calcSIP(); calcAge(); genQR(); renderBios(); calcGST(); genPwd();
+      calcEMI(); calcSIP(); calcGST(); calcAge(); genQR(); genPwd(); renderBios(); calcConv();
     })();
   </script>
 </body>
